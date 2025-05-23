@@ -2,20 +2,23 @@ import pandas as pd
 import glob
 import os
 
-# Path to data folder
+# Path to data folder containing your raw CSV files
 data_path = './data'
 
 # Get list of CSV files in the data folder
 csv_files = glob.glob(os.path.join(data_path, '*.csv'))
 
-# List to hold dataframes
+# List to hold processed dataframes
 dfs = []
 
 for file in csv_files:
     df = pd.read_csv(file)
     
-    # Filter for Pink Morsel only
-    df = df[df['product'] == 'Pink Morsel']
+    # Filter for pink morsel only (case insensitive)
+    df = df[df['product'].str.lower() == 'pink morsel']
+    
+    # Remove $ from price and convert to float
+    df['price'] = df['price'].str.replace('$', '').astype(float)
     
     # Calculate Sales = quantity * price
     df['Sales'] = df['quantity'] * df['price']
@@ -28,5 +31,6 @@ for file in csv_files:
 # Concatenate all dataframes
 combined_df = pd.concat(dfs, ignore_index=True)
 
-# Save to CSV
-combined_df.to_csv('processed_sales.csv', index=False)
+# Ensure output folder exists and save processed CSV
+os.makedirs('processed', exist_ok=True)
+combined_df.to_csv('processed/pink_morsel_sales.csv', index=False)
