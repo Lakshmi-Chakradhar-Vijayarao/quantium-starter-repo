@@ -1,0 +1,27 @@
+Project Title
+Continuous Integration Test Automation Script
+
+Project Overview
+As part of a virtual internship offered by Quantium through Forage, developed a bash script to automate the execution of the project’s test suite within a Python virtual environment. The script was designed to integrate seamlessly into a CI/CD pipeline, ensuring that all tests are executed automatically with each code change. This process reinforces continuous integration practices by providing immediate feedback on test results and maintaining codebase stability.
+
+Responsibilities & Achievements
+Automated the test execution process using a custom bash script.
+
+Ensured compatibility with CI engines by returning exit status based on test outcomes.
+
+Managed Python virtual environments to isolate dependencies.
+
+Practiced version control and collaboration using Git and GitHub.
+
+Technologies Used
+Python 3.10
+
+pytest
+
+Bash scripting
+
+Git & GitHub
+
+Virtualenv
+
+Continuous Integration (CI) concepts
